@@ -7,7 +7,7 @@ module.exports = (express) => {
   const router = express.Router();
 
   //this is my post method
-  router.post('/api', (req, res) =>{
+  router.post('/url', (req, res) =>{
     //this is to respond with links
     res.json(est.genURL(req.body.link));
   });
