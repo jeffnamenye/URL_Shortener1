@@ -1,13 +1,27 @@
-var express = require('express');//requires express as a module and sets to variable
-var body_parser = require('body-parser');//requires the body_parser
-var app = express()
+//this sets up my contant for express and body-parser
+const express = require('express');
+const body_parser = require('body-parser');
 
-app.use('/api', require('../routes/api.js')(express));//sets base of url to the api
+//this sets up the express functionality
+const app = express();
 
-var port = 3000; //sets my port to 3000 for server
+//this sets my  port to 3000
+const port = 3000;
 
-var server = app.listen(port, function(){
-  console.log('Server active on', port);
-});//listens for server on port 3000 and prints to log
+//This sets the body-parser text as a json
+app.use(body_parser.json());
 
-module.exports = server; //exports server for testing
+//this sets the body-parser text as the url encoded data
+app.use(body_parser.urlencoded({
+  extended: true,
+}));
+
+// links my routes
+app.use('/api/', require('./routes/api')(express));
+
+//sets my server to listen on port 3000
+const server = app.listen(port, () =>{
+  console.log('Good to go on port ' +port);
+});
+
+module.exports = server;
