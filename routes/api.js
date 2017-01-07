@@ -9,7 +9,7 @@ module.exports = (express) => {
   //this is my post method
   router.post('/url', (req, res) =>{
     //this is to respond with links
-    res.json(est.genURL(req.body.link));
+    res.json(est.URL_Short(req.body.link));
   });
   //this is to return the data
   return router;
