@@ -1,16 +1,16 @@
 //This links to my generation model
-const gen = require('../models/URL_Short');
-const url = require('../models/url');
+const gen = require('../../models/URL_Short');
+const url = require('../../models/url');
 
 //This accepts express as a parameter of express
 module.exports = (express) => {
   //This is an express router function
   const router = express.Router();
 
-  //  create
+  //This creates the Urls in my db
   router.post('/urls', (req, res) => {
     const rb = req.body;
-    // generates shorturl
+    //this generates short url
     rb.shortURL = url.shortURL(url);
     url.create(req.body, (err) => {
       res.status(500).json(err);
@@ -19,7 +19,7 @@ module.exports = (express) => {
     });
   });
 
-  // get
+  // This gets the urls from my db
   router.get('/urls', (req, res) => {
     url.findAll((err) => {
       res.status(500).json(err);
@@ -28,7 +28,7 @@ module.exports = (express) => {
     });
   });
 
-  // get by id
+  //This gets the urls by id
   router.get('/urls/:id', (req, res) => {
     const rb = req.body;
     rb.id = req.params.id;
@@ -39,7 +39,7 @@ module.exports = (express) => {
     });
   });
 
-  // update
+  //This updates the urls in db
   router.post('/urls/:id', (req, res) => {
     const rb = req.body;
     rb.id = req.params.id;
@@ -50,7 +50,7 @@ module.exports = (express) => {
     });
   });
 
-  // delete
+  //This deletes from my db
   router.delete('/urls/:id', (req, res) => {
     const rb = req.body;
     rb.id = req.params.id;

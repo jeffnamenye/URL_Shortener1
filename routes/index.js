@@ -12,8 +12,8 @@ module.exports = (express) => {
   });
 
   // linking routes
-  router.use('/api/v1/', require('./api/URL_Short')(express));
-  router.use('/api/v1/', require('./api/users')(express));
+  router.use('/api/v1.1.0/', require('./api/URL_Short')(express));
+  router.use('/api/v1.1.0/', require('./api/user')(express));
 
 
   // returns correct data

@@ -1,5 +1,5 @@
 const db = require('./db');
-
+require('dotenv').config();
 // This creates the urls in the db
 exports.create = (payload, err, success) => {
   db.url.create(payload).then(success).catch(err);

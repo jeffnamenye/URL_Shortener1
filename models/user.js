@@ -1,5 +1,5 @@
 const db = require('./db');
-
+require('dotenv').config();
 //This creates my user in the db
 exports.create = (payload, err, success) => {
   db.user.create(payload).then(success).catch(err);
