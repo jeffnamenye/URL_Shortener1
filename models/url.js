@@ -1,12 +1,28 @@
-// this sets up my url generator module
-exports.URL_Short = (link)=>{
-  var abc = 'ABCDEFGabcdefg123456789';
-  var URL_text_length = 7;
-  var URL_text = '';
+const bcrypt = require('bcrypt-nodejs');
 
-  for(var i = 0; i < URL_text_length; i++){
-    URL_text += abc.charAt((Math.random()) * abc.length);
+//This sets up my generate module
+exports.shortURL = () => {
+  // string of letters
+  const string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let URLId = '';
 
-  };
-  return URL_text;
-}
+  //This my for loop which is generating a string
+  for (let i = 0; i < 5; i++) {
+    URLId += string.charAt(Math.floor(Math.random() * string.length));
+  }
+  return URLId;
+};
+
+//This generates a hash of the users password with salt which helps encrypt it.
+exports.generateHash = (payload) => {
+  const hash = bcrypt.hashSync(payload, bcrypt.genSaltSync(8));
+  //This returns my hashed password
+  return hash;
+};
+
+//This compares my hashed password
+exports.validateHash = (payload) => {
+  //This compares my password and returns in BOOLEAN
+  const hash = bcrypt.compareSync(payload.password, this.localpassword);
+  return hash;
+};

@@ -1,22 +1,22 @@
 const db = require('./db');
 
-// This creates the urls in the db
+//This creates my user in the db
 exports.create = (payload, err, success) => {
-  db.url.create(payload).then(success).catch(err);
+  db.user.create(payload).then(success).catch(err);
 };
 
-//This finds all the urls in my db
+//This finds all the users in the db
 exports.findAll = (err, success) => {
-  db.url.findAll().then(success).catch(err);
+  db.user.findAll().then(success).catch(err);
 };
 
-//This finds the urls by id
+//This finds the user by id
 exports.find = (payload, err, success) => {
-  db.url.find({
+  db.user.find({
     where: {
       id: payload.id,
     },
-    //This find all of the relations in sequelize
+    //This finds all of the relations in sequelize
     include: [{
       all: true,
       nested: true,
@@ -24,19 +24,9 @@ exports.find = (payload, err, success) => {
   }).then(success).catch(err);
 };
 
-// redirect
-exports.go = (payload, err, success) => {
-  // finds where shortURL is same as payload
-  db.url.find({
-    where: {
-      shortURL: payload.shortURL,
-    },
-  }).then(success).catch(err);
-};
-
-//This updates my db
+//This updates the user in the db
 exports.update = (payload, err, success) => {
-  db.url.find({
+  db.user.find({
     where: {
       id: payload.id,
     },
@@ -45,9 +35,9 @@ exports.update = (payload, err, success) => {
   }).catch(err);
 };
 
-//This deletes the urls in the db
+//This deletes the user from the db
 exports.destroy = (payload, err, success) => {
-  db.url.destroy({
+  db.user.destroy({
     where: {
       id: payload.id,
     },

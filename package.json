@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jeffnamenye/URL_Shortener#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "localenvironment": "^1.0.2",
